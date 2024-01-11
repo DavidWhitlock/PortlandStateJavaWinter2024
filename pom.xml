@@ -24,6 +24,7 @@ accordingly
   <url>http://YourGitHubUserInLowerCase.github.io/PortlandStateJavaWinter2024</url>
 
   <modules>
+    <module>apptbook</module>
   </modules>
 
   <inceptionYear>2024</inceptionYear>
