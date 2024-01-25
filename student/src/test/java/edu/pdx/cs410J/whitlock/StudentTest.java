@@ -1,10 +1,14 @@
 package edu.pdx.cs410J.whitlock;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.startsWith;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -15,6 +19,17 @@ import static org.junit.jupiter.api.Assertions.fail;
  */
 public class StudentTest
 {
+
+  private Student dave;
+
+  @BeforeEach
+  void createDaveStudent() throws InvalidGpaException {
+    ArrayList<String> classes = new ArrayList<>();
+    classes.add("Algorithms");
+    classes.add("Operating Systems");
+    classes.add("Java");
+    this.dave = new Student("Dave", classes, 3.64, "male");
+  }
 
   @Test
   void studentNamedPatIsNamedPat() throws InvalidGpaException {
@@ -46,6 +61,28 @@ public class StudentTest
     } catch (InvalidGpaException ex) {
       // We expect this exception
     }
+  }
+
+  @Disabled
+  @Test
+  void daveStudentFromTheAssignment() {
+    assertThat(dave.toString(), equalTo("Dave has a GPA of 3.64 and is taking 3 classes: Algorithms, Operating Systems, and Java.  He says \"This class is too much work\"."));
+  }
+
+  @Test
+  void allStudentsSayThisClassIsTooMuchWork() {
+    assertThat(dave.says(), equalTo("This class is too much work"));
+  }
+
+  @Test
+  void toStringContainsStudentName() {
+    assertThat(dave.toString(), startsWith("Dave"));
+  }
+
+  @Disabled
+  @Test
+  void toStringContainsTheNumberOfClasses() {
+    assertThat(dave.toString(), containsString("3"));
   }
 
 }
