@@ -19,4 +19,10 @@ class StudentIT extends InvokeMainTestCase {
     assertThat(result.getTextWrittenToStandardError(), containsString("Missing command line arguments"));
   }
 
+  @Test
+  void invalidGpaPrintsErrorToStandardError() {
+    InvokeMainTestCase.MainMethodResult result = invokeMain(Student.class, "Dave", "male", "three-point-six-four", "Algorithms", "Operating Systems", "Java");
+    assertThat(result.getTextWrittenToStandardError(), containsString("Invalid GPA datatype"));
+  }
+
 }

@@ -64,6 +64,19 @@ public class Student extends Human {
    * standard out by invoking its <code>toString</code> method.
    */
   public static void main(String[] args) {
-    System.err.println("Missing command line arguments");
+    if (args.length == 0) {
+      System.err.println("Missing command line arguments");
+      return;
+    }
+
+    // "Dave", "male", "three-point-six-four", "Algorithms", "Operating Systems", "Java");
+    String gpaString = args[2];
+    try {
+      double gpa = Double.parseDouble(gpaString);
+
+    } catch (NumberFormatException ex) {
+      System.err.println("Invalid GPA datatype");
+    }
+
   }
 }
