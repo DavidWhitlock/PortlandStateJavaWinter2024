@@ -79,6 +79,11 @@ public class StudentTest
     assertThat(dave.toString(), startsWith("Dave"));
   }
 
+  @Test
+  void toStringContainsGpa() {
+    assertThat(dave.toString(), containsString("has a GPA of 3.64"));
+  }
+
   @Disabled
   @Test
   void toStringContainsTheNumberOfClasses() {
