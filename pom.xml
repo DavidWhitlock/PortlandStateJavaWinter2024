@@ -26,6 +26,7 @@ accordingly
   <modules>
     <module>apptbook</module>
     <module>koans</module>
+    <module>student</module>
   </modules>
 
   <inceptionYear>2024</inceptionYear>
