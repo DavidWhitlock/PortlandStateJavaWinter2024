@@ -63,20 +63,39 @@ public class Student extends Human {
    * <code>Student</code>, and prints a description of the student to
    * standard out by invoking its <code>toString</code> method.
    */
-  public static void main(String[] args) {
+  public static void main(String[] args) throws InvalidGenderException {
     if (args.length == 0) {
       System.err.println("Missing command line arguments");
       return;
     }
 
+    if (args.length == 1) {
+      System.err.println("Gender required");
+      return;
+    }
+
+    if (args.length == 2) {
+      System.err.println("GPA required");
+      return;
+    }
+
+    double gpa;
     // "Dave", "male", "three-point-six-four", "Algorithms", "Operating Systems", "Java");
-    String gpaString = args[2];
     try {
-      double gpa = Double.parseDouble(gpaString);
+      String gpaString = args[2];
+      gpa = Double.parseDouble(gpaString);
 
     } catch (NumberFormatException ex) {
       System.err.println("Invalid GPA datatype");
+      return;
     }
 
+    try {
+      new Student("Name", new ArrayList<>(), gpa, "");
+
+    } catch (InvalidGpaException e) {
+      System.err.println("Invalid GPA");
+      return;
+    }
   }
 }

@@ -25,4 +25,21 @@ class StudentIT extends InvokeMainTestCase {
     assertThat(result.getTextWrittenToStandardError(), containsString("Invalid GPA datatype"));
   }
 
+  @Test
+  void missingGpaArgumentPrintsErrorToStandardError() {
+    InvokeMainTestCase.MainMethodResult result = invokeMain(Student.class, "Dave", "male");
+    assertThat(result.getTextWrittenToStandardError(), containsString("GPA required"));
+  }
+
+  @Test
+  void missingGenderArgumentPrintsErrorToStandardError() {
+    InvokeMainTestCase.MainMethodResult result = invokeMain(Student.class, "Dave");
+    assertThat(result.getTextWrittenToStandardError(), containsString("Gender required"));
+  }
+
+  @Test
+  void gpaGreaterThan40() {
+    InvokeMainTestCase.MainMethodResult result = invokeMain(Student.class, "Dave", "male", "5.0");
+    assertThat(result.getTextWrittenToStandardError(), containsString("Invalid GPA"));
+  }
 }
