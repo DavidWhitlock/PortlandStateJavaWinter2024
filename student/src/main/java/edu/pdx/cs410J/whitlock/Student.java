@@ -24,12 +24,18 @@ public class Student extends Human {
    * @param gender                                                                  
    *        The student's gender ("male", "female", or "other", case insensitive)
    */                                                                               
-  public Student(String name, ArrayList<String> classes, double gpa, String gender) throws InvalidGpaException{
+  public Student(String name, ArrayList<String> classes, double gpa, String gender)
+    throws InvalidGpaException, InvalidGenderException {
+
     super(name);
     if (gpa > 4.0) {
       throw new InvalidGpaException();
     }
     this.gpa = gpa;
+
+    if (gender == null) {
+      throw new InvalidGenderException();
+    }
   }
 
   /**                                                                               

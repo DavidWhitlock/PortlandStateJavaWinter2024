@@ -23,7 +23,7 @@ public class StudentTest
   private Student dave;
 
   @BeforeEach
-  void createDaveStudent() throws InvalidGpaException {
+  void createDaveStudent() throws InvalidGpaException, InvalidGenderException {
     ArrayList<String> classes = new ArrayList<>();
     classes.add("Algorithms");
     classes.add("Operating Systems");
@@ -32,7 +32,7 @@ public class StudentTest
   }
 
   @Test
-  void studentNamedPatIsNamedPat() throws InvalidGpaException {
+  void studentNamedPatIsNamedPat() throws InvalidGpaException, InvalidGenderException {
     // GIVEN: I've created a Student with a name of "Pat"
     String name = "Pat";
     var pat = new Student(name, new ArrayList<>(), 0.0, "Doesn't matter");
@@ -43,7 +43,7 @@ public class StudentTest
   }
 
   @Test
-  void studentWithGpaGreaterThan4ThrowsInvalidGpaException() {
+  void studentWithGpaGreaterThan4ThrowsInvalidGpaException() throws InvalidGenderException {
     // GIVEN: A student named "Sharon" who is
     //        taking "Java" and "Front End"
     //        has a GPA of 5.00
@@ -88,6 +88,17 @@ public class StudentTest
   @Test
   void toStringContainsTheNumberOfClasses() {
     assertThat(dave.toString(), containsString("3"));
+  }
+
+  @Test
+  void nullGenderThrowsInvalidGenderException() throws InvalidGpaException {
+    try {
+      new Student("Name", new ArrayList<>(), 3.5, null);
+      fail("Should have thrown an InvalidGenderException");
+
+    } catch (InvalidGenderException ex) {
+      // We expect this
+    }
   }
 
 }
