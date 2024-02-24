@@ -16,21 +16,9 @@ import static org.mockito.Mockito.when;
 
 public class AppointmentBookRestClientTest {
 
-  @Test
-  void getAllDictionaryEntriesPerformsHttpGetWithNoParameters() throws ParserException, IOException {
-    Map<String, String> dictionary = Map.of("One", "1", "Two", "2");
-
-    HttpRequestHelper http = mock(HttpRequestHelper.class);
-    when(http.get(eq(Map.of()))).thenReturn(dictionaryAsText(dictionary));
-
-    AppointmentBookRestClient client = new AppointmentBookRestClient(http);
-
-    assertThat(client.getAllDictionaryEntries(), equalTo(dictionary));
-  }
-
-  private HttpRequestHelper.Response dictionaryAsText(Map<String, String> dictionary) {
+  private HttpRequestHelper.Response appointmentBookAsText(AppointmentBook book) {
     StringWriter writer = new StringWriter();
-    new TextDumper(writer).dump(dictionary);
+    new TextDumper(writer).dump(book);
 
     return new HttpRequestHelper.Response(writer.toString());
   }

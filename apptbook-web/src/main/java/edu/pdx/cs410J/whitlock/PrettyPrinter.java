@@ -1,22 +1,16 @@
 package edu.pdx.cs410J.whitlock;
 
 import com.google.common.annotations.VisibleForTesting;
+import edu.pdx.cs410J.AppointmentBookDumper;
 
 import java.io.PrintWriter;
 import java.io.Writer;
-import java.util.Map;
 
-public class PrettyPrinter {
+public class PrettyPrinter implements AppointmentBookDumper<AppointmentBook> {
   private final Writer writer;
 
   @VisibleForTesting
-  static String formatWordCount(int count )
-  {
-    return String.format( "Dictionary on server contains %d words", count );
-  }
-
-  @VisibleForTesting
-  static String formatDictionaryEntry(String word, String definition )
+  static String formatAppointmentDescription(String word, String definition )
   {
     return String.format("  %s -> %s", word, definition);
   }
@@ -26,17 +20,16 @@ public class PrettyPrinter {
     this.writer = writer;
   }
 
-  public void dump(Map<String, String> dictionary) {
+  @Override
+  public void dump(AppointmentBook book) {
     try (
       PrintWriter pw = new PrintWriter(this.writer)
     ) {
 
-      pw.println(formatWordCount(dictionary.size()));
-
-      for (Map.Entry<String, String> entry : dictionary.entrySet()) {
-        String word = entry.getKey();
-        String definition = entry.getValue();
-        pw.println(formatDictionaryEntry(word, definition));
+      for (Appointment appointment : book.getAppointments()) {
+        String owner = book.getOwnerName();
+        String description = appointment.getDescription();
+        pw.println(formatAppointmentDescription(owner, description));
       }
 
       pw.flush();

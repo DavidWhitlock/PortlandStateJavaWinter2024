@@ -67,7 +67,9 @@ public class AppointmentBookServletTest {
 
     assertThat(statusCode.getValue(), equalTo(HttpServletResponse.SC_OK));
 
-    assertThat(servlet.getAppointment(owner), equalTo(description));
+    AppointmentBook appointment = servlet.getAppointment(owner);
+    assertThat(appointment.getOwnerName(), equalTo(owner));
+    assertThat(appointment.getAppointments().iterator().next().getDescription(), equalTo(description));
   }
 
 }

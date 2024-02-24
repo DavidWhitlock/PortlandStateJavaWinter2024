@@ -1,22 +1,25 @@
 package edu.pdx.cs410J.whitlock;
 
+import edu.pdx.cs410J.AppointmentBookDumper;
+
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.Map;
 
-public class TextDumper {
+public class TextDumper implements AppointmentBookDumper<AppointmentBook> {
   private final Writer writer;
 
   public TextDumper(Writer writer) {
     this.writer = writer;
   }
 
-  public void dump(Map<String, String> dictionary) {
+  @Override
+  public void dump(AppointmentBook book) {
     try (
       PrintWriter pw = new PrintWriter(this.writer)
     ){
-      for (Map.Entry<String, String> entry : dictionary.entrySet()) {
-        pw.println(entry.getKey() + " : " + entry.getValue());
+      for (Appointment appointment : book.getAppointments()) {
+        pw.println(book.getOwnerName() + " : " + appointment.getDescription());
       }
 
       pw.flush();
