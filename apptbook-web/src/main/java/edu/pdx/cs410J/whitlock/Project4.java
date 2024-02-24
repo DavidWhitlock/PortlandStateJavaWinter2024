@@ -61,12 +61,8 @@ public class Project4 {
         String message;
         try {
             if (owner == null) {
-                // Print all word/definition pairs
-                AppointmentBook book = client.getAllDictionaryEntries();
-                StringWriter sw = new StringWriter();
-                PrettyPrinter pretty = new PrettyPrinter(sw);
-                pretty.dump(book);
-                message = sw.toString();
+                System.err.println("Owner is required");
+                return;
 
             } else if (description == null) {
                 // Print all dictionary entries

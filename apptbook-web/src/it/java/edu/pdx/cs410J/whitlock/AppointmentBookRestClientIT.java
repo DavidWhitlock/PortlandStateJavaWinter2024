@@ -34,18 +34,6 @@ class AppointmentBookRestClientIT {
   }
 
   @Test
-  void test1EmptyServerContainsNoDictionaryEntries() throws IOException, ParserException {
-    AppointmentBookRestClient client = newAppointmentBookRestClient();
-    try {
-
-      client.getAllDictionaryEntries();
-    } catch (RestException ex) {
-      assertThat(ex.getHttpStatusCode(), equalTo(HttpServletResponse.SC_NOT_FOUND));
-
-    }
-  }
-
-  @Test
   void test2CreateNewAppointment() throws IOException, ParserException {
     AppointmentBookRestClient client = newAppointmentBookRestClient();
     String owner = "TEST Owners";

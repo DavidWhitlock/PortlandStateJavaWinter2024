@@ -40,17 +40,6 @@ public class AppointmentBookRestClient {
   }
 
   /**
-   * Returns all dictionary entries from the server
-   */
-  public AppointmentBook getAllDictionaryEntries() throws IOException, ParserException {
-    Response response = http.get(Map.of());
-    throwExceptionIfNotOkayHttpStatus(response);
-
-    TextParser parser = new TextParser(new StringReader(response.getContent()));
-    return null;
-  }
-
-  /**
    * Returns the definition for the given word
    */
   public AppointmentBook getAppointmentBook(String owner) throws IOException, ParserException {
