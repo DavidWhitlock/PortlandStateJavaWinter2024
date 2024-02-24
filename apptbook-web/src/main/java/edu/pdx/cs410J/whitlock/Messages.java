@@ -11,13 +11,13 @@ public class Messages
         return String.format("The required parameter \"%s\" is missing", parameterName);
     }
 
-    public static String definedWordAs(String word, String definition )
+    public static String createdAppointment(String owner, String description )
     {
-        return String.format( "Defined %s as %s", word, definition );
+        return String.format( "Created new Appointment in Book for %s: %s", owner, description );
     }
 
-    public static String allDictionaryEntriesDeleted() {
-        return "All dictionary entries have been deleted";
+    public static String allAppointmentBooksDeleted() {
+        return "All Appointment Books have been deleted";
     }
 
 }
