@@ -4,13 +4,12 @@ import edu.pdx.cs410J.ParserException;
 
 import java.io.IOException;
 import java.io.PrintStream;
-import java.io.StringWriter;
 
 /**
  * The main class that parses the command line and communicates with the
  * Appointment Book server using REST.
  */
-public class Project4 {
+public class Project5 {
 
     public static final String MISSING_ARGS = "Missing command line arguments";
 

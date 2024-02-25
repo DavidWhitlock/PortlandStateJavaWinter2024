@@ -16,11 +16,11 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.fail;
 
 /**
- * An integration test for {@link Project4} that invokes its main method with
+ * An integration test for {@link Project5} that invokes its main method with
  * various arguments
  */
 @TestMethodOrder(MethodName.class)
-class Project4IT extends InvokeMainTestCase {
+class Project5IT extends InvokeMainTestCase {
     private static final String HOSTNAME = "localhost";
     private static final String PORT = System.getProperty("http.port", "8080");
 
@@ -32,15 +32,15 @@ class Project4IT extends InvokeMainTestCase {
 
     @Test
     void test1NoCommandLineArguments() {
-        MainMethodResult result = invokeMain( Project4.class );
-        assertThat(result.getTextWrittenToStandardError(), containsString(Project4.MISSING_ARGS));
+        MainMethodResult result = invokeMain( Project5.class );
+        assertThat(result.getTextWrittenToStandardError(), containsString(Project5.MISSING_ARGS));
     }
 
     @Test
     void test3NoAppointmentBookThrowsAppointmentBookRestException() {
         String owner = "OWNER";
         try {
-            invokeMain(Project4.class, HOSTNAME, PORT, owner);
+            invokeMain(Project5.class, HOSTNAME, PORT, owner);
             fail("Expected a RestException to be thrown");
 
         } catch (UncaughtExceptionInMain ex) {
@@ -54,14 +54,14 @@ class Project4IT extends InvokeMainTestCase {
         String owner = "OWNER";
         String description = "DESCRIPTION";
 
-        MainMethodResult result = invokeMain( Project4.class, HOSTNAME, PORT, owner, description );
+        MainMethodResult result = invokeMain( Project5.class, HOSTNAME, PORT, owner, description );
 
         assertThat(result.getTextWrittenToStandardError(), equalTo(""));
 
         String out = result.getTextWrittenToStandardOut();
         assertThat(out, out, containsString(Messages.createdAppointment(owner, description)));
 
-        result = invokeMain( Project4.class, HOSTNAME, PORT, owner );
+        result = invokeMain( Project5.class, HOSTNAME, PORT, owner );
 
         assertThat(result.getTextWrittenToStandardError(), equalTo(""));
 

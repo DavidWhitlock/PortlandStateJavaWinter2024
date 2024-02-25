@@ -108,7 +108,7 @@
               <addClasspath>true</addClasspath>
               <classpathLayoutType>repository</classpathLayoutType>
               <classpathPrefix>file:///${localRepositoryWithEscapedSpaces}</classpathPrefix>
-              <mainClass>edu.pdx.cs410J.whitlock.Project4</mainClass>
+              <mainClass>edu.pdx.cs410J.whitlock.Project5</mainClass>
             </manifest>
           </archive>
         </configuration>
