@@ -30,17 +30,6 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.equals.setOnClickListener(v -> {
-            String leftOperand = binding.leftOperand.getText().toString();
-            String rightOperand = binding.rightOperand.getText().toString();
-
-            int left = Integer.parseInt(leftOperand);
-            int right = Integer.parseInt(rightOperand);
-            int sum = left + right;
-
-            binding.sum.setText(String.valueOf(sum));
-        }
-        );
     }
 
     @Override

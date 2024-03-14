@@ -6,58 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
-    <LinearLayout
-        android:layout_width="314dp"
-        android:layout_height="64dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/left_operand"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:autofillHints=""
-            android:ems="10"
-            android:inputType="number"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/plus"
-            android:layout_width="20dp"
-            android:layout_height="28dp"
-            android:layout_marginBottom="84dp"
-            android:width="4pt"
-            android:text='@string/plus'
-            android:textAlignment="center" />
-
-        <EditText
-            android:id="@+id/right_operand"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:autofillHints=""
-            android:ems="10"
-            android:inputType="number"
-            android:textAlignment="center" />
-
-        <Button
-            android:id="@+id/equals"
-            android:layout_width="68dp"
-            android:layout_height="wrap_content"
-            android:text="@string/equals" />
-
-        <TextView
-            android:id="@+id/sum"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:autofillHints=""
-            android:ems="10"
-            android:textAlignment="center" />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
