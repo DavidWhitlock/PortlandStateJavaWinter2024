@@ -47,4 +47,5 @@
     <string name="plus">+</string>
     <string name="equals">=</string>
     <string name="display_calculator">Display Calculator</string>
+    <string name="back_to_main">Back to Main</string>
 </resources>

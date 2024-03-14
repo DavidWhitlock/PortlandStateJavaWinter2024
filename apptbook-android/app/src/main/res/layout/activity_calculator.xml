@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="314dp"
         android:layout_height="64dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/backToMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -48,8 +48,8 @@
             android:id="@+id/equals"
             android:layout_width="68dp"
             android:layout_height="wrap_content"
-            android:text="@string/equals"
-            android:onClick="computeSum"/>
+            android:onClick="computeSum"
+            android:text="@string/equals" />
 
         <TextView
             android:id="@+id/sum"
@@ -61,4 +61,15 @@
             android:textAlignment="center" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/backToMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="212dp"
+        android:text="@string/back_to_main"
+        android:onClick="backToMain"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

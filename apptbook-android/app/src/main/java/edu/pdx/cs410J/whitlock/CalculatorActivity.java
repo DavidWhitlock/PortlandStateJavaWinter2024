@@ -37,4 +37,8 @@ public class CalculatorActivity extends AppCompatActivity {
         TextView sumField = findViewById(R.id.sum);
         sumField.setText(String.valueOf(sum));
     }
+
+    public void backToMain(View view) {
+        finish();
+    }
 }
