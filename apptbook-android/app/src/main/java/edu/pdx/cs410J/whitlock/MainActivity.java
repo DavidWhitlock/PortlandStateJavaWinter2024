@@ -81,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
                     int sum = data.getIntExtra(CalculatorActivity.SUM_VALUE, 0);
                     this.sums.add(sum);
                     writeSumsToFile();
+
+                    Appointment appointment = new Appointment("Got sum " + sum);
+                    Toast.makeText(this, appointment.toString(), Toast.LENGTH_LONG).show();
                 }
             }
         }
