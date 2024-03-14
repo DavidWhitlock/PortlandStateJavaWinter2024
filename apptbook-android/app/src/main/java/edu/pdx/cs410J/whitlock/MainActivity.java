@@ -28,6 +28,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     private static final int GET_SUM = 42;
+    private ArrayAdapter<Integer> sums;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         ListView sumsList = findViewById(R.id.sums);
 
-        ArrayAdapter<Integer> sums = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, new ArrayList<>());
-        for (int i = 0; i < 10; i++) {
-            sums.add(i);
-        }
+        sums = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, new ArrayList<>());
         sumsList.setAdapter(sums);
 
     }
@@ -58,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 if (data != null) {
                     int sum = data.getIntExtra(CalculatorActivity.SUM_VALUE, 0);
+                    this.sums.add(sum);
 
                     Toast.makeText(this, "Got Sum of " + sum , Toast.LENGTH_LONG).show();
                 }
