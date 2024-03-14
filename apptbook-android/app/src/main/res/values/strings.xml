@@ -44,4 +44,6 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="click_me">Click Me</string>
+    <string name="plus">+</string>
+    <string name="equals">=</string>
 </resources>
