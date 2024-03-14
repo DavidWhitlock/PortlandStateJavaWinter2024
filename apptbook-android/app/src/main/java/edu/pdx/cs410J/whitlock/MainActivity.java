@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -18,8 +19,11 @@ import edu.pdx.cs410J.whitlock.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final int GET_SUM = 42;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void displayCalculator(View view) {
         Intent intent = new Intent(this, CalculatorActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, GET_SUM);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == GET_SUM) {
+            if (resultCode == RESULT_OK) {
+                if (data != null) {
+                    int sum = data.getIntExtra(CalculatorActivity.SUM_VALUE, 0);
+
+                    Toast.makeText(this, "Got Sum of " + sum , Toast.LENGTH_LONG).show();
+                }
+            }
+        }
     }
 }
